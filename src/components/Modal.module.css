@@ -1,0 +1,58 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(22, 24, 29, .45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-4);
+  z-index: 50;
+}
+
+.panel {
+  background: #fff;
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  max-width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: var(--sp-6);
+}
+.wide { max-width: 680px; }
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-4);
+}
+.title { font-size: 18px; font-weight: 700; line-height: 1.4; }
+
+.close {
+  flex-shrink: 0;
+  width: var(--tap);
+  height: var(--tap);
+  margin: calc(var(--sp-2) * -1) calc(var(--sp-2) * -1) 0 0;
+  border: none;
+  background: transparent;
+  border-radius: var(--r-sm);
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1;
+}
+.close:hover { background: var(--sunken); color: var(--ink); }
+
+.actions {
+  display: flex;
+  gap: var(--sp-3);
+  margin-top: var(--sp-6);
+}
+.actions > * { flex: 1; }
+
+/* จอแคบ: วางซ้อนกัน โดยให้ทางเลือกที่ปลอดภัยอยู่บน
+   ปุ่มที่ทำลายข้อมูลอยู่ล่างสุด ต้องตั้งใจกดถึงจะโดน */
+@media (max-width: 420px) {
+  .actions { flex-direction: column; }
+}

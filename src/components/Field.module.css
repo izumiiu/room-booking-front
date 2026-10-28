@@ -1,0 +1,39 @@
+.field { display: flex; flex-direction: column; gap: var(--sp-2); }
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-1);
+}
+.req { color: var(--danger-mark); font-weight: 500; }
+.optional { color: var(--faint); font-weight: 400; font-size: 13px; }
+
+.input {
+  min-height: var(--tap);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: #fff;
+  font-size: 15px;
+  width: 100%;
+  transition: border-color .15s, box-shadow .15s;
+}
+.input::placeholder { color: var(--faint); }
+.input:hover:not(:disabled) { border-color: var(--accent-border); }
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-tint);
+}
+.input:disabled { background: var(--sunken); color: var(--faint); }
+
+textarea.input { min-height: 88px; resize: vertical; padding-top: var(--sp-3); }
+
+.invalid { border-color: var(--danger-border); }
+.invalid:focus { border-color: var(--danger-ink); box-shadow: 0 0 0 3px var(--danger-tint); }
+
+.hint { font-size: 13px; color: var(--faint); }
+.error { font-size: 13px; color: var(--danger-ink); font-weight: 500; }

@@ -1,0 +1,64 @@
+/* ค่าออกแบบทั้งหมดของระบบอยู่ที่ไฟล์นี้ที่เดียว
+   เปลี่ยนสีหลักของทั้งแอป = แก้ --accent บรรทัดเดียว */
+:root {
+  --font: 'IBM Plex Sans Thai', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* ตัวอักษร */
+  --ink: #16181D;
+  --muted: #4A505C;
+  --faint: #767D8A;
+
+  /* พื้นและเส้นขอบ */
+  --bg: #FFFFFF;
+  --sunken: #F7F8FA;
+  --border: #C2C7D0;
+  --border-soft: #E2E4E9;
+  --border-faint: #E9EBEF;
+
+  /* สีหลัก */
+  --accent: #0F6B5F;
+  --accent-hover: #0A4E45;
+  --accent-tint: #E8F1EF;
+  --accent-ink: #0B4A41;
+  --accent-ink-soft: #2B5C54;
+  --accent-border: #C6DCD7;
+
+  /* สถานะช่องเวลา */
+  --booked-bg: #EDEFF2;
+  --booked-border: #D9DDE3;
+  --booked-ink: #4A505C;
+  --closed-bg: #F6E7DF;
+  --closed-border: #EBD3C6;
+  --closed-ink: #7A3A17;
+
+  /* อันตราย / ยกเลิก */
+  --danger-ink: #8E2518;
+  --danger-border: #D9A9A1;
+  --danger-tint: #FBF2F0;
+  --danger-tint-strong: #EFE3E1;
+  --danger-mark: #A32A1C;
+
+  /* สำเร็จ */
+  --ok-bg: #DCEDE8;
+  --ok-ink: #0B4A41;
+
+  /* รูปทรง */
+  --r-sm: 11px;
+  --r-md: 14px;
+  --r-lg: 18px;
+  --tap: 44px;          /* ขนาดเล็กสุดของสิ่งที่นิ้วต้องกดได้ */
+
+  /* ระยะห่าง */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+
+  --shadow-sm: 0 1px 2px rgba(22, 24, 29, .06);
+  --shadow-md: 0 8px 28px rgba(22, 24, 29, .12);
+  --maxw: 1040px;
+}

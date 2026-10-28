@@ -1,0 +1,44 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: var(--tap);
+  padding: 0 var(--sp-5);
+  border-radius: var(--r-md);
+  border: 1px solid transparent;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color .15s, border-color .15s, color .15s;
+  white-space: nowrap;
+}
+.btn:disabled { opacity: .55; }
+
+.primary { background: var(--accent); color: #fff; }
+.primary:hover:not(:disabled) { background: var(--accent-hover); }
+/* เทาทึบ ไม่ใช่เขียวจาง — สีจางยังอ่านว่า "กดได้" อยู่ */
+.primary:disabled { background: var(--booked-bg); color: var(--faint); opacity: 1; }
+
+.secondary { background: #fff; color: var(--accent-ink); border-color: var(--accent-border); }
+.secondary:hover:not(:disabled) { background: var(--accent-tint); }
+
+.ghost { background: transparent; color: var(--muted); border-color: var(--border-soft); }
+.ghost:hover:not(:disabled) { background: var(--sunken); color: var(--ink); }
+
+.danger { background: #fff; color: var(--danger-ink); border-color: var(--danger-border); }
+.danger:hover:not(:disabled) { background: var(--danger-tint); }
+
+.dangerSolid { background: var(--danger-ink); color: #fff; }
+.dangerSolid:hover:not(:disabled) { background: #741E13; }
+
+.full { width: 100%; }
+
+.spin {
+  width: 15px; height: 15px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: turn .7s linear infinite;
+}
+@keyframes turn { to { transform: rotate(360deg); } }

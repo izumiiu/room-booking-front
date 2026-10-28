@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# ค่าของเครื่องตัวเอง — ตอน deploy ตั้งในหน้า Vercel แทน
+.env

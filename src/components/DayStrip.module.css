@@ -1,0 +1,63 @@
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-3);
+}
+.label { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+.note { font-size: 12px; color: var(--muted); }
+
+/* มือถือ: เลื่อนแนวนอน ซ่อน scrollbar เพราะนิ้วปัดได้อยู่แล้ว */
+.strip {
+  display: flex;
+  gap: var(--sp-2);
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: var(--sp-1);
+}
+.strip::-webkit-scrollbar { display: none; }
+
+.day {
+  flex: none;
+  width: 54px;
+  min-height: 70px;
+  padding: var(--sp-2) 0 6px;
+  border-radius: 13px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  transition: border-color .12s, background-color .12s;
+}
+.day:hover:not(:disabled) { border-color: var(--accent); }
+
+.dow { font-size: 11px; }
+.num { font-size: 17px; font-weight: 600; }
+.tag { font-size: 9.5px; letter-spacing: .02em; min-height: 13px; }
+
+.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.on:hover { border-color: var(--accent); }
+
+.off {
+  background: #F4F5F7;
+  border-color: var(--border-soft);
+  color: var(--faint);
+  cursor: not-allowed;
+}
+
+@media (min-width: 1024px) {
+  .strip { flex-wrap: wrap; overflow: visible; gap: 10px; }
+  .day { width: 92px; min-height: 78px; }
+  .num { font-size: 20px; }
+  .dow { font-size: 12px; }
+  .tag { font-size: 10.5px; }
+  .note { display: none; }   /* ย่อหน้าบนสุดบอกไว้แล้ว */
+  .dowShort { display: none; }
+  .dowLong { display: inline; }
+}
+.dowLong { display: none; }
