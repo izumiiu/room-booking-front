@@ -6,9 +6,11 @@ interface Props {
     days: string[];
     value: string;
     onChange: (date: string) => void;
+    /** เปิด/ปิดจริงของแต่ละวันจาก backend — null = ยังโหลดไม่เสร็จ ใช้กฎเสาร์อาทิตย์ไปก่อน */
+    openByDate: Map<string, boolean> | null;
 }
 
-export function DayStrip({ days, value, onChange }: Props) {
+export function DayStrip({ days, value, onChange, openByDate }: Props) {
     return (
         <div>
             <div className={styles.head}>
@@ -18,8 +20,11 @@ export function DayStrip({ days, value, onChange }: Props) {
 
             <div className={styles.strip} role="group" aria-label="เลือกวันที่ต้องการจอง">
                 {days.map((d) => {
-                    // เสาร์อาทิตย์ปิดเป็นค่าเริ่มต้น ตรวจในเครื่องได้เลยไม่ต้องถาม server
-                    const closed = isWeekend(d);
+                    // ★ ถามจาก backend เสมอเมื่อมีข้อมูล
+                    //   เสาร์อาทิตย์เป็นแค่ "ค่าเริ่มต้น" ซึ่ง admin สั่งทับได้ทั้งสองทาง
+                    //   ถ้าเดาเองที่นี่ วันเสาร์ที่ admin เปิดไว้จะกดไม่ได้ทั้งที่ backend ยอมให้จอง
+                    const known = openByDate?.get(d);
+                    const closed = known === undefined ? isWeekend(d) : !known;
                     const selected = d === value;
                     const cls = [styles.day, selected ? styles.on : '', closed ? styles.off : '']
                         .filter(Boolean).join(' ');

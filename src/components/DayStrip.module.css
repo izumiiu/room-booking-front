@@ -37,6 +37,11 @@
 .day:hover:not(:disabled) { border-color: var(--accent); }
 
 .dow { font-size: 11px; }
+
+/* ต้องอยู่ก่อน @media ด้านล่าง — media query ไม่เพิ่ม specificity
+   ถ้าประกาศทีหลัง กฎนี้จะไปทับกฎใน media แล้วชื่อวันจะหายไปทั้งหมด */
+.dowShort { display: inline; }
+.dowLong { display: none; }
 .num { font-size: 17px; font-weight: 600; }
 .tag { font-size: 9.5px; letter-spacing: .02em; min-height: 13px; }
 
@@ -60,4 +65,3 @@
   .dowShort { display: none; }
   .dowLong { display: inline; }
 }
-.dowLong { display: none; }

@@ -69,6 +69,12 @@ export interface LoginResult {
     user: User;
 }
 
+export interface DayState {
+    date: string;
+    isOpen: boolean;
+    note: string | null;
+}
+
 export interface DayOverride {
     date: string;
     isOpen: boolean;

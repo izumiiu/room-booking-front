@@ -4,7 +4,7 @@ import { ApiError } from './errors';
 import { SLOT_COUNT, slotStart, slotEnd, toHHMM, MAX_ACTIVE_BOOKINGS, MAX_ADVANCE_DAYS } from './slot';
 import { todayTH, nowMinutesTH, addDays, isWeekend } from './date';
 import type {
-    Availability, Booking, DayOverride, LoginResult, MyBookings, NewBooking, Role, Slot, User, AdminBookings
+    Availability, Booking, DayOverride, DayState, LoginResult, MyBookings, NewBooking, Role, Slot, User, AdminBookings
 } from './types';
 
 // หน่วงเวลาให้เหมือนเน็ตจริง ถ้าไม่หน่วง เราจะลืมทำสถานะ "กำลังโหลด"
@@ -175,6 +175,16 @@ export const getAvailability = async (date: string): Promise<Availability> => {
         slots.push({ slot: s, start: toHHMM(slotStart(s)), end: toHHMM(slotEnd(s)), status });
     }
     return { date, today, nowMinutes, isOpen: open, slots };
+};
+
+export const getDayStates = async (from: string, to: string): Promise<{ days: DayState[] }> => {
+    await sleep(200);
+    const days: DayState[] = [];
+    for (let d = from; d <= to; d = addDays(d, 1)) {
+        const o = overrides.find((x) => x.date === d);
+        days.push({ date: d, isOpen: o ? o.isOpen : !isWeekend(d), note: o?.note ?? null });
+    }
+    return { days };
 };
 
 // ===== bookings =====

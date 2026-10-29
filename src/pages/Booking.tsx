@@ -45,6 +45,15 @@ export function Booking() {
         date
     );
 
+    // เปิด/ปิดของทั้ง 7 วัน ขอทีเดียวตอนเปิดหน้า แทนที่จะยิงทีละวัน
+    const dayStates = useLoad(
+        () => api.getDayStates(days[0] ?? todayTH(), days[days.length - 1] ?? todayTH()),
+        'days'
+    );
+    const openByDate = dayStates.data
+        ? new Map(dayStates.data.days.map((d) => [d.date, d.isOpen] as const))
+        : null;
+
     // ★ เก็บวันที่ไว้ในตัวเลือกด้วย แทนที่จะล้างค่าใน useEffect ตอนเปลี่ยนวัน
     //   สิ่งที่คำนวณได้ไม่ควรเก็บเป็น state แยก และ effect ที่ไปสั่ง setState ทำให้วาดซ้ำโดยไม่จำเป็น
     const [sel, setSel] = useState<Selection | null>(null);
@@ -128,7 +137,12 @@ export function Booking() {
             </p>
 
             <div className={styles.strip}>
-                <DayStrip days={days} value={date} onChange={(d) => { setDate(d); setSubmitError(''); }} />
+                <DayStrip
+                    days={days}
+                    value={date}
+                    openByDate={openByDate}
+                    onChange={(d) => { setDate(d); setSubmitError(''); }}
+                />
             </div>
 
             <form onSubmit={submit} noValidate>

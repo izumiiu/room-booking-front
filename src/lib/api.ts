@@ -4,7 +4,7 @@
 import { http, refreshSession } from './http';
 import * as mock from './mock';
 import type {
-    Availability, Booking, DayOverride, LoginResult, MyBookings, NewBooking, User, AdminBookings
+    Availability, Booking, DayOverride, DayState, LoginResult, MyBookings, NewBooking, User, AdminBookings
 } from './types';
 
 const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true';
@@ -61,6 +61,12 @@ export const getAvailability = (date: string): Promise<Availability> =>
     USE_MOCK
         ? mock.getAvailability(date)
         : http<Availability>(`/availability${qs({ date })}`, { auth: false });
+
+/** เปิด/ปิดของหลายวันพร้อมกัน — แถบเลือกวันใช้ตัวนี้แทนการเดาเอาเองว่าเสาร์อาทิตย์ปิด */
+export const getDayStates = (from: string, to: string): Promise<{ days: DayState[] }> =>
+    USE_MOCK
+        ? mock.getDayStates(from, to)
+        : http<{ days: DayState[] }>(`/availability/days${qs({ from, to })}`, { auth: false });
 
 // ===== bookings =====
 
